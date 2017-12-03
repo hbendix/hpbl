@@ -1,0 +1,134 @@
+﻿
+@{
+    Layout = null;
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="h4Panel">
+            <h4>Images</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="d-inline col-md-12 btnGroup">
+            <button class="btn btn-outline-primary"
+                    ng-click="getImages()"
+                    ng-show="showAdd">
+                Manage Images
+            </button>
+            <button class="btn btn-outline-primary"
+                    ng-click="addImages()"
+                    ng-show="showGet">
+                Add Images
+            </button>
+        </div>
+        <hr />
+    </div>
+    <div class="row showGet overflow" ng-if="showGet">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Image Name</th>
+                    <th>File Path</th>
+                    <th>Country</th>
+                    <th>Location</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <div>
+                <tbody ng-repeat="image in images">
+                    <tr>
+                        <th scope="row">{{image.id}}</th>
+                        <td class="tdStart">{{image.title}}</td>
+                        <td class="tdStart">{{image.filePath}}</td>
+                        <td class="tdStart">{{image.country}}</td>
+                        <td class="tdStart">{{image.location}}</td>
+                        <td class="tdStart desc">{{image.description}}</td>
+                        <td class="tdDate">{{image.taken | date:'dd-MM-yyyy'}}</td>
+                        <td class="tdLast"><button class="btn btn-sm btn-outline-success" ng-click="edit(image)">Edit</button></td>
+                        <td class="tdLast"><button class="btn btn-sm btn-outline-danger" ng-click="delete(image)">Delete</button></td>
+                    </tr>
+                </tbody>
+            </div>
+        </table>
+    </div>
+    <div class="showAdd" ng-if="showAdd">
+        <div class="row">
+            <h4>Add image to site:</h4>            
+        </div>
+        <div class="row">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Title:</th>
+                        <th>Country:</th>
+                        <th>Location:</th>
+                        <th>Description:</th>                        
+                        <th>Image URL:</th>
+                        <th>Date:</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="num in getNumber(imageNo) track by $index">
+                    <tr>
+                        <td><input type="text" ng-model="image.title" /></td>
+                        <td><input type="text" ng-model="image.country" /></td>
+                        <td><input type="text" ng-model="image.location" /></td>
+                        <td><input type="text" ng-model="image.description" /></td>
+                        <td><input type="text" ng-model="image.filepath" /></td>
+                        <td><input type="date" id="taken"/></td>
+                        <td><button class="btn-sm btn btn-outline-secondary" ng-click="add(image)">Add</button></td>
+                    </tr>
+                </tbody>
+            </table>            
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="max-width:800px;">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <img class="editImg" src="~/images/{{editImage.filePath}}">
+                    </div>
+                    <div class="form-group">
+                        <label>ID</label>
+                        <input type="text" class="form-control" ng-model="editImage.id" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" class="form-control" ng-model="editImage.title">
+                    </div>
+                    <div class="form-group">
+                        <label>Country</label>
+                        <input type="text" class="form-control" ng-model="editImage.country">
+                    </div>  
+                    <div class="form-group">
+                        <label>Location</label>
+                        <input type="text" class="form-control" ng-model="editImage.location">
+                    </div>                    
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea class="form-control" rows="3" ng-model="editImage.description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>File Path</label>
+                        <input type="text" class="form-control" ng-model="editImage.filePath">
+                    </div> 
+                    <div class="form-group">
+                        <label>Taken</label>
+                        <input type="date" class="form-control datepicker" id="editTaken" value="{{editImage.taken | date:'yyyy-MM-dd'}}" >
+                    </div> 
+                </form>                  
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline-success" ng-click="save(editImage)">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,73 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="h4Panel">
+            <h4>Admin's</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="d-inline col-md-12 btnGroup">
+            <button class="btn btn-outline-primary"
+                    ng-click="manageAdmin()">
+                Manage Admins
+            </button>
+            <button class="btn btn-outline-primary"
+                    ng-click="addAdmin()">
+                Add Admin
+            </button>
+        </div>
+        <hr />
+    </div>
+    <div class="row" ng-if="manage">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Password</th>
+                    <th>Date Added</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="admin in admins">
+                <tr>
+                    <th scope="row" ng-if="!editMode">{{admin.id}}</th>
+                    <td ng-if="!editMode">{{admin.username}}</td>
+                    <td ng-if="!editMode">{{admin.password}}</td>
+                    <td class="tdDate" ng-if="!editMode">{{admin.dateAdded | date:'dd-MM-yyyy'}}</td>
+                    <td class="tdLast" ng-if="!editMode"><button class="btn btn-sm btn-outline-success" ng-click="editMode">Edit</button></td>
+                    <td class="tdLast"><button class="btn btn-sm btn-outline-danger" ng-click="deleteAdmin(admin)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row" ng-if="add">
+        <form id="createAdmin">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Admin</label>
+                <input type="text"
+                       class="form-control"
+                       id="exampleInputEmail1"
+                       aria-describedby="emailHelp"
+                       placeholder="Enter username"
+                       ng-model="admin.Username">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password"
+                       class="form-control"
+                       id="exampleInputPassword1"
+                       placeholder="Password"
+                       ng-model="admin.Password">
+            </div>
+            <p>{{admin.Username}}</p>
+            <p>{{admin.Password}}</p>
+            <button type="submit" class="btn btn-primary" ng-click="createNewAdmin(admin)">Submit</button>
+        </form>
+    </div>
+</div>

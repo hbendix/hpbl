@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WebApplication1</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/style.css" type="text/css" />
+        <link rel="stylesheet" href="~/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/bootstrap-grid.css" />
+        <link rel="stylesheet" href="~/css/bootstrap-reboot.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.1/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.1/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+        <link href="~/css/font-awesome.min.css" rel="stylesheet" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/style.css" type="text/css" />
+        <link rel="stylesheet" href="~/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/bootstrap-grid.css" />
+        <link rel="stylesheet" href="~/css/bootstrap-reboot.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.1/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.1/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+        <link href="~/css/font-awesome.min.css" rel="stylesheet" />
+    </environment>
+</head>
+<body ng-app="app">
+    @if(ViewBag.HideNavBar != true)
+    {
+    <nav class="navbar navbar-light navbartitle">
+        <h1>HPBL</h1>
+    </nav>
+    <div>
+        @RenderBody()
+        <footer>
+            <p>&copy; 2017 | Harry Bendix-Lewis</p>
+        </footer>       
+    </div>
+}
+@if (ViewBag.HideNavBar == true)
+{
+    <div class="site-wrapper">
+        @RenderBody()
+    </div>
+
+}
+    @*<div class="loading">
+        <button class="btn btn-outline-primary enter" onclick="show();">Enter</button>
+    </div>*@
+    <div class="dim">
+
+    </div>
+    
+        <environment include="Development">
+            <script src="~/lib/jquery/dist/jquery.js"></script>
+            <script src="~/js/jquery-3.2.1.min.js"></script>
+            <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+            <script src="https://npmcdn.com/bootstrap@4.0.0-alpha.5/dist/js/bootstrap.min.js"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+            <script src="~/js/angular.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+            <script src="~/js/ui-bootstrap-tpls-2.5.0.min.js"></script>
+            <script src="~/js/AngularControllers/app.js"></script>
+            <script src="~/js/AngularControllers/feed.js"></script>
+            <script src="~/js/AngularControllers/admin.js"></script>
+            <script src="~/js/bootstrap.min.js"></script>
+            <script type='text/javascript' src='~/js/ng-infinite-scroll.min.js'></script>
+
+        </environment>
+        <environment exclude="Development">
+            <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                    asp-fallback-test="window.jQuery"
+                    crossorigin="anonymous"
+                    integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+            </script>
+            <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                    asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                    crossorigin="anonymous"
+                    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+            </script>
+            <script src="~/js/jquery-3.2.1.min.js"></script>
+            <script src="~/js/angular.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+            <script src="~/js/ui-bootstrap-tpls-2.5.0.min.js"></script>
+            <script src="~/js/AngularControllers/app.js"></script>
+            <script src="~/js/AngularControllers/feed.js"></script>
+            <script src="~/js/AngularControllers/admin.js"></script>
+            <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+            <script src="https://npmcdn.com/bootstrap@4.0.0-alpha.5/dist/js/bootstrap.min.js"></script>
+            <script src="~/js/bootstrap.min.js"></script>
+            <script type='text/javascript' src='~/js/ng-infinite-scroll.min.js'></script>
+
+        </environment>
+
+        @RenderSection("Scripts", required: false)
+        <script>
+            $(document).ready(function () {
+                location.hash = 'feed';
+            });
+        </script>
+</body>
+</html>

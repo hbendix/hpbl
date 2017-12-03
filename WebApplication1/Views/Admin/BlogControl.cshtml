@@ -1,0 +1,86 @@
+﻿
+@{
+    Layout = null;
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="h4Panel">
+            <h4>Blog</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="d-inline col-md-12 btnGroup">
+            <button class="btn btn-outline-primary"
+                    ng-click="getBlogs()">
+                Manage Blog Posts
+            </button>
+            <button class="btn btn-outline-primary"
+                    ng-click="addBlogs()">
+                Add Blog Post
+            </button>
+        </div>
+        <hr />
+    </div>
+    <div class="row showGet" ng-if="manage">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Blog Title</th>
+                    <th>Preview Text</th>
+                    <th>User</th>
+                    <th>Image URL</th>
+                    <th>Date Created</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="blog in blogs">
+                <tr>
+                    <th scope="row">{{blog.id}}</th>
+                    <td class="tdStart">{{blog.title}}</td>
+                    <td class="tdStart">{{blog.previewText}}</td>
+                    <td class="tdStart">{{blog.user}}</td>
+                    <td class="tdStart">{{blog.filePath}}</td>
+                    <td class="tdDate">{{blog.created | date:'dd-MM-yyyy'}}</td>
+                    <td class="tdLast" ng-if="!editMode"><button class="btn btn-sm btn-outline-success">Edit</button></td>
+                    <td class="tdLast"><button class="btn btn-sm btn-outline-danger">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="showAdd" ng-if="add">
+        <div class="row">
+            <h4>Add image to site:</h4>
+        </div>
+        <div class="row">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Blog Title</th>
+                        <th>Preview Text</th>
+                        <th>Body</th>
+                        <th>User</th>
+                        <th>Image URL</th>
+                        <th>Date</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="num in getNumber(imageNo) track by $index">
+                    <tr>
+                        <td><input type="text" ng-model="blog.title" /></td>
+                        <td><input type="text" ng-model="blog.previewText" /></td>
+                        <td><input type="text" ng-model="blog.body" /></td>
+                        <td><input type="text" ng-model="blog.user" /></td>
+                        <td><input type="text" ng-model="blog.filePath" /></td>
+                        <td><input type="date" id="created" /></td>
+                        <td><button class="btn-sm btn btn-outline-secondary" ng-click="addBlog(blog)">Add</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <textarea class="textarea"></textarea>
+        </div>
+    </div>
+</div>
+
