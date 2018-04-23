@@ -35,7 +35,7 @@ namespace Data.Repositories
             return websiteContext.Images
                 .OrderBy(r => Guid.NewGuid())
                 .Take(10)
-                .ToList();             
+                .ToList();   
         }
         public List<Image> GetAllImagesList()
         {

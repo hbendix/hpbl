@@ -1,0 +1,34 @@
+{
+  "name": "WebApplication1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "babel-core": "latest",
+    "babel-preset-env": "latest",
+    "gulp": "latest",
+    "gulp-babel": "latest",
+    "gulp-bytediff": "latest",
+    "gulp-concat": "latest",
+    "gulp-less": "latest",
+    "gulp-ng-annotate": "latest",
+    "gulp-rename": "latest",
+    "gulp-plumber": "latest",
+    "gulp-uglify": "latest"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hbendix/hpbl.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hbendix/hpbl/issues"
+  },
+  "homepage": "https://github.com/hbendix/hpbl#readme"
+}

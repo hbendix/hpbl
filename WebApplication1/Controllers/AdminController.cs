@@ -38,28 +38,7 @@
         {
             return View();
         }        
-        [HttpGet]
-        public JsonResult GetAllImages()
-        {
-            return Json(imageService.GetAllAdminImages());
-        }
-        [HttpPost]
-        public JsonResult AddImage(ImageViewModel image)
-        {
-            imageService.AddImage(image);
-            return Json(image);
-        }
-        [HttpPost]
-        public JsonResult UpdateImage(ImageViewModel image)
-        {
-            imageService.UpdateImage(image);
-            return Json(image);
-        }
-        [HttpPost]
-        public void DeleteImage(ImageViewModel image)
-        {
-            imageService.DeleteImage(image);
-        }
+        
         /* ADMIN CONTROL ------------------------------------------------------------------- ADMIN CONTROL*/
 
         [Route("/admin/admincontrol")]

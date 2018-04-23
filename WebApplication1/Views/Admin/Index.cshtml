@@ -4,28 +4,24 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container-fluid controlPanel" ng-controller="imageCtrlController">
-    <div class="row header h-100 justify-content-center align-items-center">
-        <div class="center-block">
-            <h3 class="center-block text-center">Admin Dashboard</h3>
-        </div>
-    </div>
+<div class="container-fluid controlPanel" ng-app="admin-app" ng-controller="imageCtrlController">    
     <div class="row">
         <div class="col-2">
             <ul class="list-group">
-                <a ng-href="#/imageCtrl">
+                <a ng-href="#/Images">
                     <li class="list-group-item">
                         Image Control
                     </li>
                 </a>
-                <a ng-href="#/blogCtrl">
-                    <li class="list-group-item">
-                        Blog Control
-                    </li>
-                </a>
-                <a ng-href="#/adminCtrl">
+                <a ng-href="#/Admin">
                     <li class="list-group-item">
                         Admin Control
+                    </li>
+                </a>
+                <hr />
+                <a href="/">
+                    <li class="list-group-item">
+                        Home Page
                     </li>
                 </a>
             </ul>
@@ -35,4 +31,7 @@
         </div>
     </div>
 </div>
+@section Scripts {
+        <script src="@Url.Content("~/js/angular/admin-app.js")"></script>
+}
 

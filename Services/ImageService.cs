@@ -20,7 +20,20 @@
         }
         public List<ImageViewModel> GetAllImages()
         {
+            bool first = true;
+            var IDs = new List<int>();
             var imageEntities = imageRepository.GetAllImages();
+            IDs.AddRange(imageEntities.Select(x => x.Id));
+            if (!first)
+            {
+                foreach (var image in imageEntities)
+                {
+                    if (IDs.Contains(image.Id))
+                    {
+                        imageEntities.Remove(image);
+                    }
+                }
+            }
             var shuffledImages = imageEntities.OrderBy(a => Guid.NewGuid()).ToList();
             return shuffledImages.Select(x => mapper.Map<Image, ImageViewModel>(x)).ToList();            
         }

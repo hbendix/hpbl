@@ -39,21 +39,10 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
-        [HttpGet]
-        public JsonResult GetFeed()
+        [Route("/home/portfolio")]
+        public IActionResult Portfolio()
         {
-            return Json(imageService.GetAllImages());
-        }
-        /* BLOG ------------------------------------------------------------------- BLOG*/
-        [Route("/home/blog")]
-        public IActionResult Blog()
-        {
-            return View();
-        }
-        [HttpGet]
-        public JsonResult GetBlogFeed()
-        {
-            return Json(blogService.GetBlogFeed());
+            return View("~/Views/Home/Portfolio.cshtml");
         }
         /* ABOUT ------------------------------------------------------------------- ABOUT*/
         [Route("/home/about")]

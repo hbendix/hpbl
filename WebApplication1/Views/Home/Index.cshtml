@@ -1,19 +1,50 @@
 ﻿@{
     ViewData["Title"] = "HPBL";
 }
-<nav class="navbar sticky-top navbarbtns">
-    <div class="row navbarbtngroup">
-        <a ng-href="#/feed"><button type="button" class="btn btn-outline-primary">Feed</button></a>
-        <button type="button" class="btn btn-outline-primary">Map</button>
-        <a ng-href="#/blog"><button type="button" class="btn btn-outline-primary">Blog</button></a>
-        <a ng-href="#/about"><button type="button" class="btn btn-outline-primary">About</button></a>
-
+<div ng-app="app">
+    <nav class="navbar sticky-top navbarbtns" ng-controller="appController">
+        <div class="row navbarbtngroup">
+            <a href="#/Pictures">
+                <button type="button" id="pictures" ng-class="{ 'active-tab': selectedTab == 'pictures'} " class="btn btn-outline-primary" ng-click="assignActiveTab($event.currentTarget.id)">Pictures</button>
+            </a>
+            <a href="#/Portfolio">
+                <button type="button" id="portfolio" ng-class="{ 'active-tab': selectedTab == 'portfolio'}"  class="btn btn-outline-primary" ng-click="assignActiveTab($event.currentTarget.id)">Portfolio</button>
+            </a>
+            <a href="#/About">
+                <button type="button" id="about" ng-class="{ 'active-tab': selectedTab == 'about'}"  class="btn btn-outline-primary" ng-click="assignActiveTab($event.currentTarget.id)">About</button>
+            </a>
+        </div>
+    </nav>
+    <div class="container-fluid body-content">
+        <ng-view></ng-view>   
     </div>
-</nav>
-<div class=".container-fluid body-content">
-    <ng-view></ng-view>   
 </div>
-<script>
-</script>
+<div class="modal fade" id="firstTimeVisitModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content welcomeModal">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Hello! Welcome to my site.</h5>
+      </div>
+      <div class="modal-body">
+        <p>Here's a quick run down:</p>
+        <h5>Pictures</h5>
+        <p>A infinite stream of some of the photos I have taken travelling.</p>
+        <h5>Portfolio</h5>
+        <p>A showcase of all the websites I've made/designed plus a quick overview of all the related skills used.</p>
+        <h5>About</h5>
+        <p>Self-explanatory 'All about me' section.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Enjoy!</button>
+      </div>
+    </div>
+  </div>
+</div>
+@section Scripts
+    {
+        <script src="@Url.Content("~/js/angular/public-app.js")"></script>
+        <script src="~/lib/ng-infinite-scroll.min.js"></script>
+        
+    }
 
 
